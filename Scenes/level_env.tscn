@@ -1,38 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwqtb1inup15w"]
+[gd_scene load_steps=4 format=3 uid="uid://cwqtb1inup15w"]
 
+[ext_resource type="Environment" uid="uid://1668cxi8wd3n" path="res://Environments/test_level_env.tres" id="1_bbyxo"]
 [ext_resource type="PackedScene" uid="uid://cj4vi6dbrubhw" path="res://Levels/test_level.tscn" id="1_mim65"]
-
-[sub_resource type="Gradient" id="Gradient_xcln6"]
-colors = PackedColorArray(0.737255, 0.698039, 0.631373, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_irabr"]
-gradient = SubResource("Gradient_xcln6")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l10jl"]
-sun_angle_max = 74.44
-sun_curve = 0.0717938
-
-[sub_resource type="Sky" id="Sky_deibf"]
-sky_material = SubResource("ProceduralSkyMaterial_l10jl")
-
-[sub_resource type="Environment" id="Environment_vqldy"]
-background_mode = 2
-sky = SubResource("Sky_deibf")
-ssil_intensity = 2.0
-ssil_sharpness = 1.0
-ssil_normal_rejection = 0.55
-sdfgi_use_occlusion = true
-glow_intensity = 1.3
-glow_bloom = 0.49
-glow_blend_mode = 1
-glow_hdr_luminance_cap = 32.39
-adjustment_contrast = 8.0
-adjustment_color_correction = SubResource("GradientTexture1D_irabr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ayyoe"]
 
 [node name="LevelEnv" type="WorldEnvironment"]
-environment = SubResource("Environment_vqldy")
+environment = ExtResource("1_bbyxo")
 
 [node name="Viewport" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_ayyoe")

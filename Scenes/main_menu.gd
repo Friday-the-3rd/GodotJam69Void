@@ -15,4 +15,4 @@ func _on_quit_pressed()->void:
 
 
 func _on_start_pressed():
-	get_tree().change_scene_to_file("res://Scenes/level_env.tscn")
+	TransitionScreen.change_to_new_scene("res://Scenes/level_env.tscn")
