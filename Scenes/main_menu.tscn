@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dkjmj4l3da4jw" path="res://Scenes/quit_window.tscn" id="2_1rl7i"]
 
 [node name="MainMenu" type="PanelContainer"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -85,6 +86,7 @@ visible = false
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="close_requested" from="QuitWindow" to="." method="_on_stay_pressed"]
 [connection signal="pressed" from="QuitWindow/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="QuitWindow/VBoxContainer/HBoxContainer/Stay" to="." method="_on_stay_pressed"]
 
