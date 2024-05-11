@@ -1,0 +1,26 @@
+[remap]
+
+importer="3d_texture"
+type="CompressedTexture3D"
+uid="uid://dhbylmby85ou0"
+path="res://.godot/imported/env_adj_test.webp-23c0f8b1b279cfeca09e5b0b34d80cee.ctex3d"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Graphics/Textures/env_adj_test.webp"
+dest_files=["res://.godot/imported/env_adj_test.webp-23c0f8b1b279cfeca09e5b0b34d80cee.ctex3d"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=33
+slices/vertical=1

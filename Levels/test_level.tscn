@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://cj4vi6dbrubhw"]
+
+[ext_resource type="Script" path="res://Levels/test_level.gd" id="1_iftge"]
+[ext_resource type="Texture2D" uid="uid://d3ltovd5wvukt" path="res://Graphics/Textures/TestTile32.png" id="2_1cngh"]
+[ext_resource type="Texture2D" uid="uid://ceukdnosd8wv8" path="res://Graphics/Textures/Crate.png" id="2_1ylsd"]
+[ext_resource type="PackedScene" uid="uid://dvwx4paulp02r" path="res://Entities/Player.tscn" id="2_c2ggb"]
+[ext_resource type="Texture2D" uid="uid://c0kfm2ybv38x4" path="res://Graphics/Textures/CrateNormal.png" id="4_qtnyr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwhmj"]
+albedo_texture = ExtResource("2_1cngh")
+metallic = 1.0
+roughness = 0.5
+normal_enabled = true
+uv1_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_rpxis"]
+material = SubResource("StandardMaterial3D_iwhmj")
+size = Vector3(15, 0.2, 12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic64u"]
+albedo_texture = ExtResource("2_1ylsd")
+normal_enabled = true
+normal_texture = ExtResource("4_qtnyr")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_crmw0"]
+material = SubResource("StandardMaterial3D_ic64u")
+
+[node name="test_level" type="Node3D"]
+script = ExtResource("1_iftge")
+
+[node name="Player" parent="." instance=ExtResource("2_c2ggb")]
+transform = Transform3D(-0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, -0.422618, 0, 0.6, 0)
+
+[node name="Collidable" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collidable"]
+mesh = SubResource("BoxMesh_rpxis")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39997, 0.6, 0)
+mesh = SubResource("BoxMesh_crmw0")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59997, 0.6, 1.4)
+mesh = SubResource("BoxMesh_crmw0")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.353553, 0.612373, -0.707107, 0.353553, 0.612372, 1.49101e-08, -0.866025, 0.5, -1, 2, 0)

@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkjmj4l3da4jw"]
+
+[ext_resource type="Script" path="res://Scenes/quit_window.gd" id="1_m1pee"]
+
+[node name="QuitWindow" type="Window"]
+initial_position = 4
+size = Vector2i(300, 120)
+max_size = Vector2i(600, 300)
+script = ExtResource("1_m1pee")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+bbcode_enabled = true
+text = "
+[center]Are you sure you want to quit?[/center]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Quit"
+
+[node name="Stay" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Stay
+"
+
+[connection signal="about_to_popup" from="." to="." method="_on_about_to_popup"]
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Stay" to="." method="_on_close_requested"]

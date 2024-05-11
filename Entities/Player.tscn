@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvwx4paulp02r"]
+
+[ext_resource type="Script" path="res://Entities/Player.gd" id="1_iifat"]
+[ext_resource type="PackedScene" uid="uid://dkjmj4l3da4jw" path="res://Scenes/quit_window.tscn" id="2_unn7x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1gefo"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_iifat")
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Eyes" type="Camera3D" parent="Neck"]
+current = true
+
+[node name="Body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_1gefo")
+
+[node name="QuitWindow" parent="." instance=ExtResource("2_unn7x")]
+size = Vector2i(340, 160)
+visible = false
+
+[node name="RichTextLabel" parent="QuitWindow/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(200, 100)
+text = "
+[center]Do you want to go back to menu?
+Some progress might not be saved[/center]"
+
+[node name="Stay" parent="QuitWindow/VBoxContainer/HBoxContainer" index="1"]
+text = "Go back"
+
+[connection signal="close_requested" from="QuitWindow" to="." method="_on_stay_pressed"]
+[connection signal="pressed" from="QuitWindow/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="QuitWindow/VBoxContainer/HBoxContainer/Stay" to="." method="_on_stay_pressed"]
+
+[editable path="QuitWindow"]
