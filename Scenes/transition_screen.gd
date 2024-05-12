@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var path_to_file : String
+@export var path_to_file : String = "res://Scenes/main_menu.tscn"
 
 func change_to_new_scene(path : String) -> void:
 	get_tree().paused = true

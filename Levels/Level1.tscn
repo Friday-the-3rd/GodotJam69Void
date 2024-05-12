@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyg2wtud1ul4r"]
+
+[ext_resource type="Environment" uid="uid://1668cxi8wd3n" path="res://Environments/test_level_env.tres" id="1_loiyq"]
+[ext_resource type="PackedScene" uid="uid://cj4vi6dbrubhw" path="res://Levels/test_level.tscn" id="2_i7do6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayyoe"]
+
+[node name="LevelEnv" type="WorldEnvironment"]
+environment = ExtResource("1_loiyq")
+
+[node name="Viewport" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_ayyoe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Viewport"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="test_level" parent="Viewport/SubViewport" instance=ExtResource("2_i7do6")]

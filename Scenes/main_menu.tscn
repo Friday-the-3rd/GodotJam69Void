@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdin3l2wgvyy2"]
+[gd_scene load_steps=10 format=3 uid="uid://cdin3l2wgvyy2"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_yl3ns"]
 [ext_resource type="PackedScene" uid="uid://dkjmj4l3da4jw" path="res://Scenes/quit_window.tscn" id="2_1rl7i"]
+
+[sub_resource type="Gradient" id="Gradient_qdaq2"]
+colors = PackedColorArray(0.0980392, 0.117647, 0.215686, 1, 0.0980392, 0.215686, 0.294118, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_curnm"]
+gradient = SubResource("Gradient_qdaq2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75xmn"]
+texture = SubResource("GradientTexture1D_curnm")
+axis_stretch_vertical = 1
+
+[sub_resource type="Gradient" id="Gradient_pih44"]
+colors = PackedColorArray(0.0588235, 0.0392157, 0.176471, 1, 0.0588235, 0.176471, 0.215686, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oppnb"]
+gradient = SubResource("Gradient_pih44")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ov4km"]
+texture = SubResource("GradientTexture1D_oppnb")
+axis_stretch_vertical = 1
+
+[sub_resource type="Theme" id="Theme_pt1af"]
+Button/styles/hover = SubResource("StyleBoxTexture_75xmn")
+Button/styles/normal = SubResource("StyleBoxTexture_ov4km")
 
 [node name="MainMenu" type="PanelContainer"]
 process_mode = 3
@@ -10,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_pt1af")
 script = ExtResource("1_yl3ns")
 
 [node name="MenuBGContainer" type="SubViewportContainer" parent="."]

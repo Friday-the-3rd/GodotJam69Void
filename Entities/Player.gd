@@ -20,6 +20,7 @@ var target_pos := Vector3.ZERO
 @onready var Pivot := $Neck
 @onready var PlayerCam := $Neck/Eyes
 @onready var QWindow := $QuitWindow
+@onready var Ray := $Neck/Ray
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -28,6 +29,16 @@ func _ready():
 
 func _physics_process(delta):
 	movement(delta)
+
+func _input(event):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		ray_collision_use()
+	
+func ray_collision_use():
+	if Ray.get_collider() != null:
+		var collider = Ray.get_collider()
+		if collider is Transition:
+			TransitionScreen.change_to_new_scene(collider.path_to_next_scene)
 	
 func _unhandled_input(event):
 	look_around(event)
@@ -65,7 +76,6 @@ func look_around(event):
 
 func _on_quit_pressed():
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-
 
 func _on_stay_pressed():
 	QWindow.hide()
