@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ch0mjya1tc5d0"]
 
-[ext_resource type="ArrayMesh" uid="uid://bucxxiw6jncx7" path="res://Models/bowl.obj" id="1_f2oab"]
 [ext_resource type="Script" path="res://Scenes/item_inspect.gd" id="1_qgpk3"]
+[ext_resource type="ArrayMesh" uid="uid://cpgjcqefkhfms" path="res://Meshes/bowl_mesh.tres" id="2_bih35"]
 
 [sub_resource type="Environment" id="Environment_x6017"]
 
@@ -30,7 +30,7 @@ render_target_update_mode = 4
 
 [node name="Item" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.965926, 0.12941, 0.224144, 0, 0.866025, -0.5, -0.258819, 0.482963, 0.836516, 0, 0, 0)
-mesh = ExtResource("1_f2oab")
+mesh = ExtResource("2_bih35")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.866025, -0.5, 2.03554e-08, 0.482963, 0.836516, -0.258819, 0.12941, 0.224144, 0.965926, 0, 1, 0)
@@ -39,7 +39,6 @@ transform = Transform3D(0.866025, -0.5, 2.03554e-08, 0.482963, 0.836516, -0.2588
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport"]
-visible = false
 custom_minimum_size = Vector2(1200, 240)
 anchors_preset = 12
 anchor_top = 1.0
@@ -72,7 +71,4 @@ bbcode_enabled = true
 text = "[center]This is a description of current item[/center]"
 fit_content = true
 
-[node name="RotationOrigin" type="Node3D" parent="SubViewportContainer/SubViewport"]
-
-[node name="ItemLookTo" type="Marker3D" parent="SubViewportContainer/SubViewport/RotationOrigin"]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
