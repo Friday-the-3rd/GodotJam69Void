@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpybkn8fjepno"
-path.s3tc="res://.godot/imported/table-metal-roughness.png-cf70198cf65c97af26f396c4e888e1db.s3tc.ctex"
+path.s3tc="res://.godot/imported/table-metal-roughness.png-18c6b711cb5ab1038adae05e0b863eea.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/table/table-metal-roughness.png"
-dest_files=["res://.godot/imported/table-metal-roughness.png-cf70198cf65c97af26f396c4e888e1db.s3tc.ctex"]
+source_file="res://textures/table/metalic/table-metal-roughness.png"
+dest_files=["res://.godot/imported/table-metal-roughness.png-18c6b711cb5ab1038adae05e0b863eea.s3tc.ctex"]
 
 [params]
 

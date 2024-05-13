@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fp3jtuskfvl6"
-path.s3tc="res://.godot/imported/table-metal-emit.png-f7804b0fe8b8d7209738f5a73505324f.s3tc.ctex"
+path.s3tc="res://.godot/imported/table-metal-emit.png-4b60c2000bd44f4f7b72e02544e8aa74.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/table/table-metal-emit.png"
-dest_files=["res://.godot/imported/table-metal-emit.png-f7804b0fe8b8d7209738f5a73505324f.s3tc.ctex"]
+source_file="res://textures/table/metalic/table-metal-emit.png"
+dest_files=["res://.godot/imported/table-metal-emit.png-4b60c2000bd44f4f7b72e02544e8aa74.s3tc.ctex"]
 
 [params]
 

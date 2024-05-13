@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bb3fs3uay843b"
-path.s3tc="res://.godot/imported/table-roughness.png-efb8e98fbc5d628205de4fa67dd49202.s3tc.ctex"
+path.s3tc="res://.godot/imported/table-roughness.png-3628c9e2380e8e35695cf9c878e5d43d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/table/table-roughness.png"
-dest_files=["res://.godot/imported/table-roughness.png-efb8e98fbc5d628205de4fa67dd49202.s3tc.ctex"]
+source_file="res://textures/table/wood/table-roughness.png"
+dest_files=["res://.godot/imported/table-roughness.png-3628c9e2380e8e35695cf9c878e5d43d.s3tc.ctex"]
 
 [params]
 

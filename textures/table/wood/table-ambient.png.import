@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvu83dyhmfl3t"
-path.s3tc="res://.godot/imported/table-ambient.png-1bd817f6cb3ba78fc1bd928160430e79.s3tc.ctex"
+path.s3tc="res://.godot/imported/table-ambient.png-0e75d6549e972c95a4da4a405ebdf434.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/table/table-ambient.png"
-dest_files=["res://.godot/imported/table-ambient.png-1bd817f6cb3ba78fc1bd928160430e79.s3tc.ctex"]
+source_file="res://textures/table/wood/table-ambient.png"
+dest_files=["res://.godot/imported/table-ambient.png-0e75d6549e972c95a4da4a405ebdf434.s3tc.ctex"]
 
 [params]
 
