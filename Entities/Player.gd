@@ -21,6 +21,7 @@ var target_pos := Vector3.ZERO
 @onready var PlayerCam := $Neck/Eyes
 @onready var QWindow := $QuitWindow
 @onready var Ray := $Neck/Ray
+@onready var Feet := $Feet
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -62,6 +63,10 @@ func movement(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if Feet.get_collider():
+			var floor = Feet.get_collider()
+			if floor is Floor:
+				pass
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
