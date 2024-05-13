@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cj4vi6dbrubhw"]
+[gd_scene load_steps=12 format=3 uid="uid://cj4vi6dbrubhw"]
 
 [ext_resource type="Script" path="res://Levels/test_level.gd" id="1_iftge"]
 [ext_resource type="Texture2D" uid="uid://d3ltovd5wvukt" path="res://Graphics/Textures/TestTile32.png" id="2_1cngh"]
 [ext_resource type="Texture2D" uid="uid://ceukdnosd8wv8" path="res://Graphics/Textures/Crate.png" id="2_1ylsd"]
 [ext_resource type="PackedScene" uid="uid://dvwx4paulp02r" path="res://Entities/Player.tscn" id="2_c2ggb"]
+[ext_resource type="Script" path="res://Classes/Floor.gd" id="4_egbxu"]
 [ext_resource type="Texture2D" uid="uid://c0kfm2ybv38x4" path="res://Graphics/Textures/CrateNormal.png" id="4_qtnyr"]
 [ext_resource type="PackedScene" uid="uid://sdwv6bfs0fj5" path="res://Objects/door.tscn" id="6_hne8e"]
 
@@ -40,6 +41,7 @@ transform = Transform3D(-0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, -0.422618
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Collidable"]
 mesh = SubResource("BoxMesh_rpxis")
+script = ExtResource("4_egbxu")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Collidable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39997, 0.6, 0)

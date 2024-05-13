@@ -21,6 +21,10 @@ target_position = Vector3(0, 0, -2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_1gefo")
 
+[node name="Feet" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, -1.5, 0)
+
 [node name="QuitWindow" parent="." instance=ExtResource("2_unn7x")]
 size = Vector2i(340, 160)
 visible = false
