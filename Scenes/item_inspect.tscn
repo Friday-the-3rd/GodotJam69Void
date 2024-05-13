@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch0mjya1tc5d0"]
+[gd_scene load_steps=7 format=3 uid="uid://ch0mjya1tc5d0"]
 
 [ext_resource type="Script" path="res://Scenes/item_inspect.gd" id="1_qgpk3"]
 [ext_resource type="ArrayMesh" uid="uid://cpgjcqefkhfms" path="res://Meshes/bowl_mesh.tres" id="2_bih35"]
+[ext_resource type="Shader" path="res://Shaders/blur.gdshader" id="2_coxs1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ng3bi"]
+shader = ExtResource("2_coxs1")
+shader_parameter/lod = 3.0
 
 [sub_resource type="Environment" id="Environment_x6017"]
 
@@ -9,7 +14,16 @@
 environment = SubResource("Environment_x6017")
 
 [node name="ItemInspect" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_qgpk3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ng3bi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 process_mode = 3
@@ -26,7 +40,7 @@ world_3d = SubResource("World3D_rkc8y")
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1280, 720)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Item" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.965926, 0.12941, 0.224144, 0, 0.866025, -0.5, -0.258819, 0.482963, 0.836516, 0, 0, 0)
@@ -66,7 +80,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center]This is a description of current item[/center]"
 fit_content = true

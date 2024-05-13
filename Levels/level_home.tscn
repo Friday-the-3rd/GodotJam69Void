@@ -1,0 +1,337 @@
+[gd_scene load_steps=29 format=3 uid="uid://xh8xx2udqbye"]
+
+[ext_resource type="Script" path="res://Classes/test_level.gd" id="1_djgic"]
+[ext_resource type="PackedScene" uid="uid://dvwx4paulp02r" path="res://Entities/Player.tscn" id="2_1tpdm"]
+[ext_resource type="ArrayMesh" uid="uid://dprvovoim5q52" path="res://Models/wardrobe.obj" id="4_282ct"]
+[ext_resource type="PackedScene" uid="uid://sdwv6bfs0fj5" path="res://Objects/door.tscn" id="5_lr60c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wd2uy"]
+size = Vector3(11, 0.1, 11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l5nn5"]
+size = Vector3(11, 0.1, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lt2f1"]
+size = Vector3(11, 8, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tgfia"]
+size = Vector3(11, 4, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dsjvr"]
+size = Vector3(9, 1, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pbmc8"]
+size = Vector3(11, 8, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lnjgj"]
+size = Vector3(2, 3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6yglw"]
+size = Vector3(7, 3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3av8a"]
+size = Vector3(1, 3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5i0io"]
+size = Vector3(11, 8, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ye6yr"]
+size = Vector3(11, 8, 0.3)
+
+[sub_resource type="Gradient" id="Gradient_gt7gh"]
+colors = PackedColorArray(0.937255, 0.921569, 0.6, 1, 0.84, 0.43078, 0.1764, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1258y"]
+gradient = SubResource("Gradient_gt7gh")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06m4a"]
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_1258y")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0, -0.5, 0)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_7y1mu"]
+material = SubResource("StandardMaterial3D_06m4a")
+size = Vector3(0.05, 1.5, 1.5)
+
+[sub_resource type="Gradient" id="Gradient_2hiuf"]
+colors = PackedColorArray(0.5, 0.491, 0.32, 1, 0.5, 0.256417, 0.105, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t82bl"]
+gradient = SubResource("Gradient_2hiuf")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5q74u"]
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_t82bl")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0, -0.5, 0)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rssuv"]
+material = SubResource("StandardMaterial3D_5q74u")
+size = Vector3(0.05, 1.5, 1.5)
+
+[sub_resource type="PrismMesh" id="PrismMesh_1pv4m"]
+left_to_right = 0.0
+size = Vector3(4, 3.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_322t7"]
+size = Vector3(2, 3.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rk7yb"]
+size = Vector3(4.2, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci7e5"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.196078)
+
+[sub_resource type="SphereMesh" id="SphereMesh_i7wk1"]
+material = SubResource("StandardMaterial3D_ci7e5")
+radial_segments = 16
+rings = 8
+
+[node name="LevelHome" type="Node3D"]
+script = ExtResource("1_djgic")
+
+[node name="Collidable" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("BoxMesh_wd2uy")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.95, 0)
+mesh = SubResource("BoxMesh_wd2uy")
+
+[node name="Floor2" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05, 2)
+mesh = SubResource("BoxMesh_l5nn5")
+
+[node name="KitchenLongWall" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5.65)
+mesh = SubResource("BoxMesh_lt2f1")
+
+[node name="Floor2RoomsWall" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1, 2)
+mesh = SubResource("BoxMesh_tgfia")
+
+[node name="Barrier" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.6, -1.3)
+mesh = SubResource("BoxMesh_dsjvr")
+
+[node name="FrontExitWall" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -5.65)
+mesh = SubResource("BoxMesh_pbmc8")
+
+[node name="KitchenWall" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.5, -0.35)
+mesh = SubResource("BoxMesh_lnjgj")
+
+[node name="EntranceWall" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, -0.35)
+mesh = SubResource("BoxMesh_6yglw")
+
+[node name="DinnerRoomWall" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.15, 1.5, 0.2)
+mesh = SubResource("BoxMesh_3av8a")
+
+[node name="DinnerRoomWall2" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.15, 1.5, 5)
+mesh = SubResource("BoxMesh_3av8a")
+
+[node name="SideLongWall" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.65, 4, 0)
+mesh = SubResource("BoxMesh_5i0io")
+
+[node name="WindowLongWall" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.65, 4, 0)
+mesh = SubResource("BoxMesh_ye6yr")
+
+[node name="Wardrobe" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.5, 0.99, 5.1)
+mesh = ExtResource("4_282ct")
+skeleton = NodePath("../..")
+
+[node name="Wardrobe7" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.5, 0.99, -0.9)
+mesh = ExtResource("4_282ct")
+skeleton = NodePath("../..")
+
+[node name="Wardrobe2" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(-1, 0, -1.74846e-07, 0, 1, 0, 8.74228e-08, 0, -2, 5.4, 0.99, 1)
+mesh = ExtResource("4_282ct")
+skeleton = NodePath("../..")
+
+[node name="Wardrobe6" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1.31134e-07, 0, -2, 0, 1, 0, 1, 0, 2.62269e-07, -4.4, 0.99, -0.1)
+mesh = ExtResource("4_282ct")
+skeleton = NodePath("../..")
+
+[node name="Wardrobe3" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(-1, -1.50996e-07, 5.28019e-15, -1.06904e-22, -4.37114e-08, -0.8, 1.50996e-07, -1, 3.49691e-08, 5.425, 0.47, 3.5)
+mesh = ExtResource("4_282ct")
+skeleton = NodePath("../..")
+
+[node name="Wardrobe4" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1.94707e-07, -1, 3.49691e-08, -6.43349e-22, -4.37114e-08, -0.8, 1, 1.94707e-07, -3.96657e-15, 4.6, 0.47, 1.975)
+mesh = ExtResource("4_282ct")
+skeleton = NodePath("../..")
+
+[node name="Wardrobe5" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(7.78829e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 4, 1.94707e-07, -8.51092e-15, -2.2, 0.5, 1.6)
+mesh = ExtResource("4_282ct")
+skeleton = NodePath("../..")
+
+[node name="WindowTemp" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.6, -3.5)
+mesh = SubResource("BoxMesh_7y1mu")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="SpotLight3D" parent="Collidable/WindowTemp"]
+transform = Transform3D(-2.18557e-08, -0.866025, 0.5, -3.78552e-08, 0.5, 0.866025, -1, -1.77636e-15, -4.37114e-08, -0.0999999, 0.8, 0)
+layers = 2
+light_color = Color(1, 0.705882, 0.313726, 1)
+light_energy = 1.5
+light_indirect_energy = 2.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="WindowTemp2" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.6, 3.5)
+mesh = SubResource("BoxMesh_7y1mu")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="SpotLight3D" parent="Collidable/WindowTemp2"]
+transform = Transform3D(-2.18557e-08, -0.866025, 0.5, -3.78552e-08, 0.5, 0.866025, -1, -1.77636e-15, -4.37114e-08, -0.0999999, 0.8, 0)
+layers = 2
+light_color = Color(1, 0.705882, 0.313726, 1)
+light_energy = 1.5
+light_indirect_energy = 2.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="WindowTemp5" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 5.3, 0.1)
+mesh = SubResource("BoxMesh_7y1mu")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="SpotLight3D" parent="Collidable/WindowTemp5"]
+transform = Transform3D(-2.18557e-08, -0.866025, 0.5, -3.78552e-08, 0.5, 0.866025, -1, -1.77636e-15, -4.37114e-08, -0.0999999, 0.8, 0)
+layers = 2
+light_color = Color(1, 0.705882, 0.313726, 1)
+light_energy = 1.5
+light_indirect_energy = 2.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="WindowTemp3" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1.6, 2.5)
+mesh = SubResource("BoxMesh_rssuv")
+skeleton = NodePath("../SideLongWall")
+
+[node name="DirectionalLight3D" type="SpotLight3D" parent="Collidable/WindowTemp3"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.1, 0.8, 0)
+layers = 2
+light_color = Color(1, 0.705882, 0.313726, 1)
+light_energy = 0.25
+light_indirect_energy = 2.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="WindowTemp4" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 5.3, 0.1)
+mesh = SubResource("BoxMesh_rssuv")
+skeleton = NodePath("../SideLongWall")
+
+[node name="DirectionalLight3D" type="SpotLight3D" parent="Collidable/WindowTemp4"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.1, 0.8, 0)
+layers = 2
+light_color = Color(1, 0.705882, 0.313726, 1)
+light_energy = 0.25
+light_indirect_energy = 2.0
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="Stairs" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.55, -2.5)
+mesh = SubResource("PrismMesh_1pv4m")
+
+[node name="Stairs2" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.55, -2.5)
+mesh = SubResource("BoxMesh_322t7")
+
+[node name="Stairs3" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.5, -1)
+mesh = SubResource("BoxMesh_rk7yb")
+
+[node name="Door" parent="." instance=ExtResource("5_lr60c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, 0, -4.95317)
+locked = true
+
+[node name="Door3" parent="." instance=ExtResource("5_lr60c")]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 3.5, 3.1, 1.84683)
+locked = true
+
+[node name="Door4" parent="." instance=ExtResource("5_lr60c")]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 3.1, 1.84683)
+locked = true
+
+[node name="Door5" parent="." instance=ExtResource("5_lr60c")]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, -3.5, 3.1, 1.84683)
+locked = true
+
+[node name="Door2" parent="." instance=ExtResource("5_lr60c")]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, -4.4, 0, -3.55317)
+locked = true
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+amount = 360
+lifetime = 5.0
+preprocess = 3.0
+randomness = 0.2
+mesh = SubResource("SphereMesh_i7wk1")
+emission_shape = 3
+emission_box_extents = Vector3(11, 1, 11)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.05
+initial_velocity_max = 0.3
+linear_accel_min = -0.1
+linear_accel_max = 0.1
+damping_max = 0.005
+scale_amount_min = 0.02
+scale_amount_max = 0.03
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+amount = 360
+lifetime = 5.0
+preprocess = 3.0
+randomness = 0.2
+mesh = SubResource("SphereMesh_i7wk1")
+emission_shape = 3
+emission_box_extents = Vector3(11, 1, 11)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.05
+initial_velocity_max = 0.3
+linear_accel_min = -0.1
+linear_accel_max = 0.1
+damping_max = 0.005
+scale_amount_min = 0.02
+scale_amount_max = 0.03
+
+[node name="Player" parent="." instance=ExtResource("2_1tpdm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -4.6)

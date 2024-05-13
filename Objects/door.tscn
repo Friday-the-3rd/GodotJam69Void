@@ -1,16 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://sdwv6bfs0fj5"]
 
+[ext_resource type="PackedScene" uid="uid://xqp8jffh060n" path="res://Objects/temp_door.tscn" id="2_5qtvn"]
 [ext_resource type="Script" path="res://Classes/Transition.gd" id="2_k6mse"]
-[ext_resource type="ArrayMesh" uid="uid://dhi0vqfo2klbq" path="res://Meshes/test_door.tres" id="2_vl6kn"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t5cyw"]
-points = PackedVector3Array(0, 0, -0.05, 0, 0, 0.05, 0, 2.39997, -0.05, 1.31237, 0, -0.05, 1.31237, 0, 0.05, 0, 2.39997, 0.05, 1.31237, 2.39997, -0.05, 1.31237, 2.39997, 0.05)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cthis"]
+points = PackedVector3Array(0.105527, 5.01991, 0.192044, 0.00790158, 6.02836, 0.484921, 0.0403903, 5.96335, 0.452336, -0.21987, 6.02836, -0.49127, -0.21987, 3.94643, 0.484921, 0.00790158, 3.94643, -0.49127, 0.0403903, 5.96335, -0.458686, -0.21987, 6.02836, 0.484921, -0.21987, 3.94643, -0.49127, 0.0403903, 3.94643, 0.452336, 0.0403903, 3.94643, -0.458686, 0.00790158, 6.02836, -0.49127, 0.105527, 5.11753, 0.354679, 0.00790158, 3.94643, 0.484921, 0.0403903, 5.44281, -0.49127, 0.0403903, 4.43456, -0.49127, 0.105527, 5.08492, 0.192044, 0.105527, 5.05252, 0.354679, 0.105527, 5.11753, 0.257117, 0.105527, 5.01991, 0.257117)
 
 [node name="Transition" type="StaticBody3D"]
 script = ExtResource("2_k6mse")
 
-[node name="TestDoor" type="MeshInstance3D" parent="."]
-mesh = ExtResource("2_vl6kn")
+[node name="Temp_Door" parent="." instance=ExtResource("2_5qtvn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -4, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_t5cyw")
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -4, 0)
+shape = SubResource("ConvexPolygonShape3D_cthis")

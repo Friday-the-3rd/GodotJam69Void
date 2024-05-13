@@ -4,8 +4,8 @@ class_name Player
 ######
 ### Constants
 ######
-const SPEED := 5.0
-const JUMP_VELOCITY := 4.5
+const SPEED := 2.0
+#const JUMP_VELOCITY := 4.5
 const MOUSE_SENS := 0.002
 
 ######
@@ -40,7 +40,7 @@ func _input(event):
 func ray_collision_use():
 	if Ray.get_collider() != null:
 		var collider = Ray.get_collider()
-		if collider is Transition:
+		if collider is Transition and !collider.locked:
 			TransitionScreen.change_to_new_scene(collider.path_to_next_scene)
 		if collider is ItemObject3D:
 			IInspect.visible = true
@@ -61,8 +61,8 @@ func movement(delta):
 		velocity.y -= gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	#	velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

@@ -12,7 +12,7 @@ const MOUSE_SENS := 0.002
 
 func set_object(object : ItemObject3D):
 	Item.mesh = object.item_mesh()
-	ItemPan.get_node("Item Name").text = "[center]"+object.item_name()+"[/center]"
+	ItemPan.get_node("Item Name").text = "[center][wave]"+object.item_name()+"[/wave][/center]"
 	ItemPan.get_node("Item Desc").text = "[center]"+object.item_desc()+"[/center]"
 	lmb_start_pos = Vector2.ZERO
 	cur_rotation = Vector3( deg_to_rad(15),0,deg_to_rad(30))

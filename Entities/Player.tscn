@@ -4,12 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://dkjmj4l3da4jw" path="res://Scenes/quit_window.tscn" id="2_unn7x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1gefo"]
+radius = 0.3
+height = 1.8
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_iifat")
 
 [node name="Neck" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Eyes" type="Camera3D" parent="Neck"]
 current = true
