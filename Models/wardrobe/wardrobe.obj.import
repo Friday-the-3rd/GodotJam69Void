@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://dprvovoim5q52"
-path="res://.godot/imported/wardrobe.obj-34145d574313303cb96e4e71ceb3f324.mesh"
+path="res://.godot/imported/wardrobe.obj-47ce4ccb747b8d8320978984241c18ba.mesh"
 
 [deps]
 
-files=["res://.godot/imported/wardrobe.obj-34145d574313303cb96e4e71ceb3f324.mesh"]
+files=["res://.godot/imported/wardrobe.obj-47ce4ccb747b8d8320978984241c18ba.mesh"]
 
-source_file="res://Models/wardrobe/wardrobe.obj"
-dest_files=["res://.godot/imported/wardrobe.obj-34145d574313303cb96e4e71ceb3f324.mesh", "res://.godot/imported/wardrobe.obj-34145d574313303cb96e4e71ceb3f324.mesh"]
+source_file="res://Models/wardrobe.obj"
+dest_files=["res://.godot/imported/wardrobe.obj-47ce4ccb747b8d8320978984241c18ba.mesh", "res://.godot/imported/wardrobe.obj-47ce4ccb747b8d8320978984241c18ba.mesh"]
 
 [params]
 

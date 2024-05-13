@@ -23,6 +23,8 @@ var target_pos := Vector3.ZERO
 @onready var Ray := $Neck/Ray
 @onready var Feet := $Feet
 
+var item_inspect = preload("res://Scenes/item_inspect.tscn")
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	global_position = target_pos
@@ -40,12 +42,18 @@ func ray_collision_use():
 		var collider = Ray.get_collider()
 		if collider is Transition:
 			TransitionScreen.change_to_new_scene(collider.path_to_next_scene)
+		if collider is ItemObject3D:
+			IInspect.visible = true
+			IInspect.set_object(collider)
 	
 func _unhandled_input(event):
 	look_around(event)
 	if Input.is_action_just_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		QWindow.popup()
+		if IInspect.visible:
+			IInspect.visible = false
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			QWindow.popup()
 	
 func movement(delta):
 	# Add the gravity.
