@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://dww2yxhntmfy6"]
+
+[ext_resource type="Material" uid="uid://dvma08ffpk854" path="res://Materials/VoidMat.tres" id="1_nt1e7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_or3vt"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wme8j"]
+material = SubResource("StandardMaterial3D_or3vt")
+radius = 250.0
+height = 500.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_855gw"]
+material = ExtResource("1_nt1e7")
+flip_faces = true
+radius = 500.0
+height = 1000.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fxplk"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 1500.0
+emission_ring_inner_radius = 0.0
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvqaj"]
+shading_mode = 0
+albedo_color = Color(0.0392157, 0, 0.0588235, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2ks3y"]
+material = SubResource("StandardMaterial3D_fvqaj")
+radius = 5.0
+height = 10.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ifab5"]
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 10.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_014ke"]
+shading_mode = 0
+albedo_color = Color(0.0392157, 0, 0.0588235, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_58iq0"]
+material = SubResource("StandardMaterial3D_014ke")
+radius = 100.0
+height = 0.001
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k7avi"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 1500.0
+emission_ring_inner_radius = 0.0
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_lto1s"]
+material = ExtResource("1_nt1e7")
+radius = 12.5
+height = 25.0
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_wme8j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_855gw")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 216
+lifetime = 20.0
+speed_scale = 2.0
+trail_lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_fxplk")
+draw_pass_1 = SubResource("SphereMesh_2ks3y")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+amount = 3
+lifetime = 10.0
+speed_scale = 2.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ifab5")
+draw_pass_1 = SubResource("SphereMesh_58iq0")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+amount = 216
+lifetime = 20.0
+speed_scale = 2.0
+trail_lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_k7avi")
+draw_pass_1 = SubResource("SphereMesh_lto1s")
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="."]
+strength = 0.0
+radius = 1500.0

@@ -27,13 +27,12 @@ var item_inspect = preload("res://Scenes/item_inspect.tscn")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	global_position = target_pos
 	PlayerCam.make_current()
 
 func _physics_process(delta):
 	movement(delta)
 
-func _input(event):
+func _input(_event):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		ray_collision_use()
 	
@@ -43,7 +42,7 @@ func ray_collision_use():
 		if collider is Transition:
 			collider.use()
 			if !collider.locked:
-				TransitionScreen.change_to_new_scene(collider.path_to_next_scene)
+				collider.connect("door_opened",TransitionScreen.change_to_new_scene.bind(collider.path_to_next_scene))
 		if collider is ItemObject3D:
 			IInspect.visible = true
 			IInspect.set_object(collider)

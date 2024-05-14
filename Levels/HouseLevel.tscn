@@ -1,9 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://xh8xx2udqbye"]
+[gd_scene load_steps=40 format=3 uid="uid://xh8xx2udqbye"]
 
 [ext_resource type="Script" path="res://Classes/test_level.gd" id="1_djgic"]
 [ext_resource type="PackedScene" uid="uid://dvwx4paulp02r" path="res://Entities/Player.tscn" id="2_1tpdm"]
+[ext_resource type="Script" path="res://Classes/Floor.gd" id="2_4bfgq"]
 [ext_resource type="ArrayMesh" uid="uid://dprvovoim5q52" path="res://Models/wardrobe.obj" id="4_282ct"]
 [ext_resource type="PackedScene" uid="uid://sdwv6bfs0fj5" path="res://Objects/door.tscn" id="5_lr60c"]
+[ext_resource type="Script" path="res://Classes/ItemObject3D.gd" id="6_aaj7a"]
+[ext_resource type="Resource" uid="uid://km8a6xy8pfoe" path="res://ItemResources/FlowerPot.tres" id="7_2y4we"]
+[ext_resource type="Resource" uid="uid://ccs25mmxfbhib" path="res://ItemResources/Calendar.tres" id="8_4gqry"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wd2uy"]
 size = Vector3(11, 0.1, 11)
@@ -76,13 +80,16 @@ size = Vector3(0.05, 1.5, 1.5)
 
 [sub_resource type="PrismMesh" id="PrismMesh_1pv4m"]
 left_to_right = 0.0
-size = Vector3(4, 3.1, 2)
+size = Vector3(3.9, 3.1, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_322t7"]
-size = Vector3(2, 3.1, 2)
+size = Vector3(2, 0.2, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rk7yb"]
 size = Vector3(4.2, 3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h1ega"]
+size = Vector3(0.25, 0.2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci7e5"]
 transparency = 1
@@ -94,17 +101,75 @@ material = SubResource("StandardMaterial3D_ci7e5")
 radial_segments = 16
 rings = 8
 
+[sub_resource type="Shader" id="Shader_yqe45"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D DEPTH_TEXTURE : source_color, hint_depth_texture;
+
+uniform float depth_range:hint_range(0.1, 100.0, 0.1);
+
+void vertex(){
+	POSITION = vec4(VERTEX, 1.0);
+}
+
+void fragment() {
+	vec2 uv = SCREEN_UV;
+	
+	vec3 screen_color = texture(SCREEN_TEXTURE, uv).rgb;
+	
+	float depth = texture(DEPTH_TEXTURE, SCREEN_UV).x;
+	vec3 ndc = vec3(SCREEN_UV * 2.0 - 1.0, depth);
+	vec4 view = INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
+	view.xyz /= view.w;
+	float linear_depth = -view.z / depth_range;
+	
+	// your code goes here!
+	
+	vec3 fog = vec3(linear_depth) * vec3(150.0/255.,40.0/255.0,10.0/255.0);
+	vec3 final_color = fog + screen_color;
+	
+	ALBEDO = final_color;
+	ALPHA = screen_color.b;
+	
+	// example outputs
+	
+	//ALBEDO = vec3(linear_depth); 	// showing depth texture
+	//ALBEDO = normal; 				// showing normal texture
+	//ALBEDO = vec3(roughness); 	// showing roughness texture
+	ALBEDO = final_color;		// showing screen texture
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_scqhd"]
+render_priority = 0
+shader = SubResource("Shader_yqe45")
+shader_parameter/depth_range = 25.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_ria5t"]
+material = SubResource("ShaderMaterial_scqhd")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_2qqj1"]
+size = Vector3(0.2, 0.6, 0.2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0m7kg"]
+points = PackedVector3Array(0.00951635, 0.304762, 0.104762, -0.0970588, -0.282353, -0.0970588, -0.0970588, -0.282353, 0.0970588, 0.104762, -0.266637, -0.104762, -0.00951635, 0.304762, -0.104762, 0.104762, -0.266637, 0.104762, -0.104762, -0.266637, 0.104762, -0.00951635, 0.304762, 0.104762, 0.00951635, 0.304762, -0.104762, -0.104762, -0.266637, -0.104762, 0.0970588, -0.282353, 0.0970588, 0.0970588, -0.282353, -0.0970588)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xx51m"]
+points = PackedVector3Array(0.00951635, 0.304762, 0.104762, -0.0970588, -0.282353, -0.0970588, -0.0970588, -0.282353, 0.0970588, 0.104762, -0.266637, -0.104762, -0.00951635, 0.304762, -0.104762, 0.104762, -0.266637, 0.104762, -0.104762, -0.266637, 0.104762, -0.00951635, 0.304762, 0.104762, 0.00951635, 0.304762, -0.104762, -0.104762, -0.266637, -0.104762, 0.0970588, -0.282353, 0.0970588, 0.0970588, -0.282353, -0.0970588)
+
 [node name="LevelHome" type="Node3D"]
 script = ExtResource("1_djgic")
-
-[node name="Player" parent="." instance=ExtResource("2_1tpdm")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, -4.4)
 
 [node name="Collidable" type="Node3D" parent="."]
 
 [node name="Floor" type="MeshInstance3D" parent="Collidable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 mesh = SubResource("BoxMesh_wd2uy")
+script = ExtResource("2_4bfgq")
+step_sound = "Placeholder"
 
 [node name="Ceiling" type="MeshInstance3D" parent="Collidable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.95, 0)
@@ -113,6 +178,8 @@ mesh = SubResource("BoxMesh_wd2uy")
 [node name="Floor2" type="MeshInstance3D" parent="Collidable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05, 2)
 mesh = SubResource("BoxMesh_l5nn5")
+script = ExtResource("2_4bfgq")
+step_sound = "Placeholder"
 
 [node name="KitchenLongWall" type="MeshInstance3D" parent="Collidable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 5.65)
@@ -195,7 +262,7 @@ mesh = SubResource("BoxMesh_7y1mu")
 skeleton = NodePath("../..")
 
 [node name="DirectionalLight3D" type="SpotLight3D" parent="Collidable/WindowTemp"]
-transform = Transform3D(-2.18557e-08, -0.866025, 0.5, -3.78552e-08, 0.5, 0.866025, -1, -1.77636e-15, -4.37114e-08, -0.0999999, 0.8, 0)
+transform = Transform3D(-2.18557e-08, -0.866025, 0.5, -3.78552e-08, 0.5, 0.866025, -1, -1.95399e-14, -4.37114e-08, -0.0999999, 0.8, 0)
 layers = 2
 light_color = Color(1, 0.705882, 0.313726, 1)
 light_energy = 1.5
@@ -265,20 +332,83 @@ spot_range = 10.0
 spot_angle = 60.0
 
 [node name="Stairs" type="MeshInstance3D" parent="Collidable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.55, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45, 1.55, -2.5)
+layers = 0
 mesh = SubResource("PrismMesh_1pv4m")
+script = ExtResource("2_4bfgq")
+step_sound = "Placeholder"
 
 [node name="Stairs2" type="MeshInstance3D" parent="Collidable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.55, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, -2.5)
 mesh = SubResource("BoxMesh_322t7")
 
 [node name="Stairs3" type="MeshInstance3D" parent="Collidable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.5, -1)
 mesh = SubResource("BoxMesh_rk7yb")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.1, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.3, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.5, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0.7, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0.9, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, 1.1, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 1.3, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, 1.5, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 1.7, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15, 1.9, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 2.1, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65, 2.3, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 2.5, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15, 2.7, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Collidable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 2.9, -2.5)
+mesh = SubResource("BoxMesh_h1ega")
+
 [node name="Door" parent="." instance=ExtResource("5_lr60c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45, 0, -4.75)
-locked = true
+path_to_next_scene = "res://Levels/VoidEnv.tscn"
 
 [node name="Door3" parent="." instance=ExtResource("5_lr60c")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 3.1, 1.8)
@@ -290,10 +420,6 @@ locked = true
 
 [node name="Door5" parent="." instance=ExtResource("5_lr60c")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 3.1, 1.8)
-locked = true
-
-[node name="Door2" parent="." instance=ExtResource("5_lr60c")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.4, 0, -3.55317)
 locked = true
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
@@ -335,3 +461,34 @@ linear_accel_max = 0.1
 damping_max = 0.005
 scale_amount_min = 0.02
 scale_amount_max = 0.03
+
+[node name="Player" parent="." instance=ExtResource("2_1tpdm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.81531, 1.14345, -4.5)
+
+[node name="FogShader" parent="Player/Neck" index="0"]
+mesh = SubResource("QuadMesh_ria5t")
+
+[node name="Pot" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 4.4, -1.3)
+script = ExtResource("6_aaj7a")
+item_resource = ExtResource("7_2y4we")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pot"]
+mesh = SubResource("PrismMesh_2qqj1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pot"]
+shape = SubResource("ConvexPolygonShape3D_0m7kg")
+
+[node name="Calendar" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 5.2, 1.1, 2.2)
+script = ExtResource("6_aaj7a")
+item_resource = ExtResource("8_4gqry")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Calendar"]
+mesh = SubResource("PrismMesh_2qqj1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Calendar"]
+shape = SubResource("ConvexPolygonShape3D_xx51m")
+
+[editable path="Player"]
+[editable path="Player/QuitWindow"]

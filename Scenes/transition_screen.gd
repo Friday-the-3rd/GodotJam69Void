@@ -9,10 +9,10 @@ func change_to_new_scene(path : String) -> void:
 	$AnimationPlayer.play("FadeIn")
 
 
-func _on_animation_finished(name):
-	if name == "FadeIn":
+func _on_animation_finished(anim_name):
+	if anim_name == "FadeIn":
 		if path_to_file != null:
 			get_tree().change_scene_to_file(path_to_file)
-	elif name == "FadeOut":
+	elif anim_name == "FadeOut":
 		get_tree().paused = false
 		visible = false

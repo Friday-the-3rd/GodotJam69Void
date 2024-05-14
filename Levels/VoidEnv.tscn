@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctocb45ca6s4e"]
+
+[ext_resource type="Script" path="res://Levels/VoidEnv.gd" id="1_d6kty"]
+[ext_resource type="PackedScene" uid="uid://h4l4nxnxn4v1" path="res://Levels/VoidLevel.tscn" id="2_klvqg"]
+
+[sub_resource type="Gradient" id="Gradient_2yj3k"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.04, 0.15, 0.37, 0.845161)
+colors = PackedColorArray(1, 0.803922, 0.803922, 1, 0.298039, 0.301961, 0.654902, 1, 0.117647, 0, 0.313726, 1, 0.0588235, 0.0196078, 0.0392157, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ylu27"]
+noise_type = 3
+frequency = 0.006
+fractal_type = 2
+fractal_octaves = 4
+domain_warp_enabled = true
+domain_warp_amplitude = 1.0
+domain_warp_frequency = 2.0
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3ymx6"]
+width = 215
+height = 215
+invert = true
+in_3d_space = true
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 0.25
+color_ramp = SubResource("Gradient_2yj3k")
+noise = SubResource("FastNoiseLite_ylu27")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6h5o0"]
+panorama = SubResource("NoiseTexture2D_3ymx6")
+
+[sub_resource type="Sky" id="Sky_lqxvp"]
+sky_material = SubResource("PanoramaSkyMaterial_6h5o0")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_w4vd6"]
+background_mode = 2
+background_energy_multiplier = 1.2
+sky = SubResource("Sky_lqxvp")
+fog_light_color = Color(0.0196078, 0, 0.0588235, 1)
+fog_light_energy = 2.0
+fog_height = 1.0
+fog_height_density = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayyoe"]
+
+[node name="LevelEnv" type="WorldEnvironment"]
+environment = SubResource("Environment_w4vd6")
+script = ExtResource("1_d6kty")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_ayyoe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="VoidLevel" parent="ViewportContainer/SubViewport" instance=ExtResource("2_klvqg")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+visible = false

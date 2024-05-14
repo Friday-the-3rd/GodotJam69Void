@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://h4l4nxnxn4v1"]
+
+[ext_resource type="Script" path="res://Classes/test_level.gd" id="1_i12ox"]
+[ext_resource type="PackedScene" uid="uid://dvwx4paulp02r" path="res://Entities/Player.tscn" id="1_jpimm"]
+[ext_resource type="Shader" path="res://Entities/Player.gdshader" id="2_j2tx5"]
+[ext_resource type="PackedScene" uid="uid://dww2yxhntmfy6" path="res://Objects/void.tscn" id="4_t58pd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pj4en"]
+size = Vector2(500, 500)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mb6b7"]
+render_priority = 0
+shader = ExtResource("2_j2tx5")
+shader_parameter/depth_range = 100.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_6dn75"]
+material = SubResource("ShaderMaterial_mb6b7")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asxjo"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_8sroe"]
+material = SubResource("StandardMaterial3D_asxjo")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="Curve" id="Curve_q3s73"]
+max_value = 2.0
+_data = [Vector2(0.706977, 1.0989), 0.0, 0.0, 0, 0, Vector2(1, 1.97802), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_wrxtl"]
+material = SubResource("StandardMaterial3D_asxjo")
+
+[node name="VoidLevel" type="Node3D"]
+script = ExtResource("1_i12ox")
+
+[node name="Collidable" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collidable"]
+layers = 0
+mesh = SubResource("PlaneMesh_pj4en")
+
+[node name="Player" parent="." instance=ExtResource("1_jpimm")]
+
+[node name="FogShader" parent="Player/Neck" index="0"]
+mesh = SubResource("QuadMesh_6dn75")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 216
+lifetime = 120.0
+preprocess = 60.0
+speed_scale = 12.49
+mesh = SubResource("SphereMesh_8sroe")
+emission_shape = 2
+emission_sphere_radius = 128.0
+direction = Vector3(5, 0, 0)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.1
+scale_amount_min = 0.5
+scale_amount_max = 1.2
+scale_amount_curve = SubResource("Curve_q3s73")
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="."]
+amount = 216
+lifetime = 360.0
+preprocess = 5.0
+explosiveness = 0.99
+mesh = SubResource("SphereMesh_wrxtl")
+emission_shape = 2
+emission_sphere_radius = 128.0
+direction = Vector3(5, 0, 0)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.1
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+
+[node name="MeshInstance3D2" parent="." instance=ExtResource("4_t58pd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1000, -1000)
+skeleton = NodePath("")
+
+[editable path="Player"]
+[editable path="Player/QuitWindow"]

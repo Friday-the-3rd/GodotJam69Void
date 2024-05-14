@@ -13,4 +13,4 @@ func item_mesh():
 	for child in get_children():
 		if child is MeshInstance3D:
 			return child.mesh
-	var placeholder : BoxMesh = load("res://Meshes/placeholder.tres").duplicate()
+	return load("res://Meshes/placeholder.tres").duplicate()
