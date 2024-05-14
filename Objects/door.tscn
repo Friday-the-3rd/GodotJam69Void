@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://sdwv6bfs0fj5"]
+[gd_scene load_steps=37 format=3 uid="uid://sdwv6bfs0fj5"]
 
 [ext_resource type="Script" path="res://Classes/Transition.gd" id="2_k6mse"]
 
@@ -423,13 +423,6 @@ tracks/0/path = NodePath("klamka")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0333333, 1, -0.00071106, 0, 0, 1, 0.0666667, 1, -0.0027796, 0, 0, 0.999996, 0.1, 1, -0.00610862, 0, 0, 0.999981, 0.133333, 1, -0.0106011, 0, 0, 0.999944, 0.166667, 1, -0.0161598, 0, 0, 0.999869, 0.2, 1, -0.0226873, 0, 0, 0.999743, 0.233333, 1, -0.0300862, 0, 0, 0.999547, 0.266667, 1, -0.0382586, 0, 0, 0.999268, 0.3, 1, -0.0471065, 0, 0, 0.99889, 0.333333, 1, -0.0565314, 0, 0, 0.998401, 0.366667, 1, -0.0664352, 0, 0, 0.997791, 0.4, 1, -0.0767191, 0, 0, 0.997053, 0.433333, 1, -0.0872846, 0, 0, 0.996183, 0.566667, 1, -0.130398, 0, 0, 0.991462, 0.6, 1, -0.140901, 0, 0, 0.990024, 0.633333, 1, -0.151101, 0, 0, 0.988518, 0.666667, 1, -0.160902, 0, 0, 0.98697, 0.7, 1, -0.17021, 0, 0, 0.985408, 0.733333, 1, -0.178929, 0, 0, 0.983862, 0.766667, 1, -0.186969, 0, 0, 0.982366, 0.8, 1, -0.194234, 0, 0, 0.980955, 0.833333, 1, -0.200635, 0, 0, 0.979666, 0.866667, 1, -0.206078, 0, 0, 0.978536, 0.9, 1, -0.210472, 0, 0, 0.9776, 0.933333, 1, -0.213725, 0, 0, 0.976894, 0.966667, 1, -0.215745, 0, 0, 0.97645, 1.03333, 1, -0.215745, 0, 0, 0.97645, 1.06667, 1, -0.213725, 0, 0, 0.976894, 1.1, 1, -0.210472, 0, 0, 0.9776, 1.13333, 1, -0.206078, 0, 0, 0.978536, 1.16667, 1, -0.200635, 0, 0, 0.979666, 1.2, 1, -0.194234, 0, 0, 0.980955, 1.23333, 1, -0.186969, 0, 0, 0.982366, 1.26667, 1, -0.178929, 0, 0, 0.983862, 1.3, 1, -0.17021, 0, 0, 0.985408, 1.33333, 1, -0.160902, 0, 0, 0.98697, 1.36667, 1, -0.151101, 0, 0, 0.988518, 1.4, 1, -0.140901, 0, 0, 0.990024, 1.43333, 1, -0.130398, 0, 0, 0.991462, 1.56667, 1, -0.0872845, 0, 0, 0.996183, 1.6, 1, -0.0767191, 0, 0, 0.997053, 1.63333, 1, -0.0664352, 0, 0, 0.997791, 1.66667, 1, -0.0565314, 0, 0, 0.998401, 1.7, 1, -0.0471065, 0, 0, 0.99889, 1.73333, 1, -0.0382586, 0, 0, 0.999268, 1.76667, 1, -0.0300863, 0, 0, 0.999547, 1.8, 1, -0.0226873, 0, 0, 0.999743, 1.83333, 1, -0.0161598, 0, 0, 0.999869, 1.86667, 1, -0.0106011, 0, 0, 0.999944, 1.9, 1, -0.00610863, 0, 0, 0.999981, 1.93333, 1, -0.00277963, 0, 0, 0.999996, 1.96667, 1, -0.000711024, 0, 0, 1, 2, 1, 0, 0, 0, 1)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/path = NodePath("klamka_001")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 1, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_e4gtl"]
 resource_name = "Circle_001Action_001"
@@ -441,39 +434,55 @@ tracks/0/path = NodePath("klamka_001")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 1, 0, 0, 0, 0.0333333, 1, 1, 0, 0, 0.00071106, 0.0666667, 1, 0.999996, 0, 0, 0.0027796, 0.1, 1, 0.999981, 0, 0, 0.00610862, 0.133333, 1, 0.999944, 0, 0, 0.0106011, 0.166667, 1, 0.999869, 0, 0, 0.0161598, 0.2, 1, 0.999743, 0, 0, 0.0226873, 0.233333, 1, 0.999547, 0, 0, 0.0300862, 0.266667, 1, 0.999268, 0, 0, 0.0382586, 0.3, 1, 0.99889, 0, 0, 0.0471064, 0.333333, 1, 0.998401, 0, 0, 0.0565314, 0.366667, 1, 0.997791, 0, 0, 0.0664352, 0.4, 1, 0.997053, 0, 0, 0.0767191, 0.433333, 1, 0.996183, 0, 0, 0.0872845, 0.566667, 1, 0.991462, 0, 0, 0.130398, 0.6, 1, 0.990024, 0, 0, 0.140901, 0.633333, 1, 0.988518, 0, 0, 0.151101, 0.666667, 1, 0.98697, 0, 0, 0.160902, 0.7, 1, 0.985408, 0, 0, 0.170209, 0.733333, 1, 0.983862, 0, 0, 0.178929, 0.766667, 1, 0.982366, 0, 0, 0.186969, 0.8, 1, 0.980955, 0, 0, 0.194234, 0.833333, 1, 0.979666, 0, 0, 0.200635, 0.866667, 1, 0.978536, 0, 0, 0.206078, 0.9, 1, 0.9776, 0, 0, 0.210472, 0.933333, 1, 0.976894, 0, 0, 0.213725, 0.966667, 1, 0.97645, 0, 0, 0.215745, 1.03333, 1, 0.97645, 0, 0, 0.215745, 1.06667, 1, 0.976894, 0, 0, 0.213725, 1.1, 1, 0.9776, 0, 0, 0.210472, 1.13333, 1, 0.978536, 0, 0, 0.206078, 1.16667, 1, 0.979666, 0, 0, 0.200635, 1.2, 1, 0.980955, 0, 0, 0.194234, 1.23333, 1, 0.982366, 0, 0, 0.186969, 1.26667, 1, 0.983862, 0, 0, 0.178929, 1.3, 1, 0.985408, 0, 0, 0.170209, 1.33333, 1, 0.98697, 0, 0, 0.160902, 1.36667, 1, 0.988518, 0, 0, 0.151101, 1.4, 1, 0.990024, 0, 0, 0.140901, 1.43333, 1, 0.991462, 0, 0, 0.130398, 1.56667, 1, 0.996183, 0, 0, 0.0872846, 1.6, 1, 0.997053, 0, 0, 0.0767191, 1.63333, 1, 0.997791, 0, 0, 0.0664352, 1.66667, 1, 0.998401, 0, 0, 0.0565314, 1.7, 1, 0.99889, 0, 0, 0.0471065, 1.73333, 1, 0.999268, 0, 0, 0.0382586, 1.76667, 1, 0.999547, 0, 0, 0.0300862, 1.8, 1, 0.999743, 0, 0, 0.0226873, 1.83333, 1, 0.999869, 0, 0, 0.0161598, 1.86667, 1, 0.999944, 0, 0, 0.0106011, 1.9, 1, 0.999981, 0, 0, 0.0061086, 1.93333, 1, 0.999996, 0, 0, 0.00277963, 1.96667, 1, 1, 0, 0, 0.000711054, 2, 1, 1, 0, 0, 1.49012e-08)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/path = NodePath("klamka")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_0ksaa"]
+resource_name = "RESET"
+length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cll25"]
 _data = {
 "Circle_001Action": SubResource("Animation_ckl3n"),
-"Circle_001Action_001": SubResource("Animation_e4gtl")
+"Circle_001Action_001": SubResource("Animation_e4gtl"),
+"RESET": SubResource("Animation_0ksaa")
 }
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_b5y48"]
-sync = true
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qb2ya"]
-animation = &"Circle_001Action"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6aw4c"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dvxds"]
 animation = &"Circle_001Action_001"
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_mag4i"]
-graph_offset = Vector2(-385.613, 46.889)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_b5y48")
-nodes/Blend2/position = Vector2(180, 60)
-nodes/Klamka1/node = SubResource("AnimationNodeAnimation_qb2ya")
-nodes/Klamka1/position = Vector2(-60, 40)
-nodes/Klamka2/node = SubResource("AnimationNodeAnimation_6aw4c")
-nodes/Klamka2/position = Vector2(-100, 160)
-nodes/output/position = Vector2(400, 140)
-node_connections = [&"Blend2", 0, &"Klamka1", &"Blend2", 1, &"Klamka2", &"output", 0, &"Blend2"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mxwli"]
+animation = &"Circle_001Action"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_jnlv2"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_awdib"]
+graph_offset = Vector2(-501.666, 76.7196)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_mxwli")
+nodes/Animation/position = Vector2(-60, 100)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_dvxds")
+"nodes/Animation 2/position" = Vector2(-100, 220)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_jnlv2")
+nodes/Blend2/position = Vector2(140, 140)
+node_connections = [&"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2", &"output", 0, &"Blend2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sejxh"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mpahf"]
+reset = false
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_52ugq"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_oi7ch"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_awdib")
+states/BlendTree/position = Vector2(595, 74)
+states/End/position = Vector2(818, 74)
+states/RESET/node = SubResource("AnimationNodeAnimation_sejxh")
+states/RESET/position = Vector2(714, 169)
+states/Start/position = Vector2(370, 74)
+transitions = ["Start", "BlendTree", SubResource("AnimationNodeStateMachineTransition_mpahf"), "BlendTree", "RESET", SubResource("AnimationNodeStateMachineTransition_52ugq")]
 
 [node name="door" type="StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -509,7 +518,7 @@ mesh = SubResource("ArrayMesh_ekggk")
 skeleton = NodePath("")
 
 [node name="klamka_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 0, 0, 1, 8.74228e-08, 0, -8.74228e-08, 1, 0.035, 1.1212, 0.329717)
+transform = Transform3D(-1, 0, 0, 0, 0.999861, 0.0166656, 0, -0.0166656, 0.999861, 0.035, 1.1212, 0.329717)
 mesh = SubResource("ArrayMesh_lba6f")
 skeleton = NodePath("")
 
@@ -520,8 +529,8 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
-tree_root = SubResource("AnimationNodeBlendTree_mag4i")
+tree_root = SubResource("AnimationNodeStateMachine_oi7ch")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Blend2/blend_amount = 0.5
+parameters/BlendTree/Blend2/blend_amount = 0.5
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

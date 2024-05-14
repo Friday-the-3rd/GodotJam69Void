@@ -1,7 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvwx4paulp02r"]
+[gd_scene load_steps=7 format=3 uid="uid://dvwx4paulp02r"]
 
 [ext_resource type="Script" path="res://Entities/Player.gd" id="1_iifat"]
+[ext_resource type="Shader" path="res://Entities/Player.gdshader" id="2_tjjt5"]
 [ext_resource type="PackedScene" uid="uid://dkjmj4l3da4jw" path="res://Scenes/quit_window.tscn" id="2_unn7x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpcax"]
+render_priority = 0
+shader = ExtResource("2_tjjt5")
+shader_parameter/depth_range = 25.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_2gb6v"]
+material = SubResource("ShaderMaterial_tpcax")
+flip_faces = true
+size = Vector2(2, 2)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1gefo"]
 radius = 0.3
@@ -12,6 +23,9 @@ script = ExtResource("1_iifat")
 
 [node name="Neck" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="FogShader" type="MeshInstance3D" parent="Neck"]
+mesh = SubResource("QuadMesh_2gb6v")
 
 [node name="Eyes" type="Camera3D" parent="Neck"]
 current = true

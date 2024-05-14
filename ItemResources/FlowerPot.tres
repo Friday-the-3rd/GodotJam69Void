@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://km8a6xy8pfoe"]
+
+[ext_resource type="Script" path="res://Classes/ItemResource.gd" id="1_67x3w"]
+
+[resource]
+script = ExtResource("1_67x3w")
+item_name = "Flower Pot"
+item_desc = "My daughter's favourite flower used to grow here"

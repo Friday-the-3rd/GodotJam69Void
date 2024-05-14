@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://ccs25mmxfbhib"]
+
+[ext_resource type="Script" path="res://Classes/ItemResource.gd" id="1_4asiq"]
+
+[resource]
+script = ExtResource("1_4asiq")
+item_name = "Calendar"
+item_desc = "[shake]What day is it?[/shake]"
