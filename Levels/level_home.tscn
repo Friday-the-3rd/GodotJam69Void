@@ -97,6 +97,9 @@ rings = 8
 [node name="LevelHome" type="Node3D"]
 script = ExtResource("1_djgic")
 
+[node name="Player" parent="." instance=ExtResource("2_1tpdm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5, -4.4)
+
 [node name="Collidable" type="Node3D" parent="."]
 
 [node name="Floor" type="MeshInstance3D" parent="Collidable"]
@@ -274,23 +277,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.5, -1)
 mesh = SubResource("BoxMesh_rk7yb")
 
 [node name="Door" parent="." instance=ExtResource("5_lr60c")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, 0, -4.95317)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45, 0, -4.75)
 locked = true
 
 [node name="Door3" parent="." instance=ExtResource("5_lr60c")]
-transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 3.5, 3.1, 1.84683)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 3.1, 1.8)
 locked = true
 
 [node name="Door4" parent="." instance=ExtResource("5_lr60c")]
-transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 3.1, 1.84683)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.1, 1.8)
 locked = true
 
 [node name="Door5" parent="." instance=ExtResource("5_lr60c")]
-transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, -3.5, 3.1, 1.84683)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 3.1, 1.8)
 locked = true
 
 [node name="Door2" parent="." instance=ExtResource("5_lr60c")]
-transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, -4.4, 0, -3.55317)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.4, 0, -3.55317)
 locked = true
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
@@ -332,6 +335,3 @@ linear_accel_max = 0.1
 damping_max = 0.005
 scale_amount_min = 0.02
 scale_amount_max = 0.03
-
-[node name="Player" parent="." instance=ExtResource("2_1tpdm")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -4.6)

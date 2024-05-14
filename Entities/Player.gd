@@ -40,8 +40,10 @@ func _input(event):
 func ray_collision_use():
 	if Ray.get_collider() != null:
 		var collider = Ray.get_collider()
-		if collider is Transition and !collider.locked:
-			TransitionScreen.change_to_new_scene(collider.path_to_next_scene)
+		if collider is Transition:
+			collider.use()
+			if !collider.locked:
+				TransitionScreen.change_to_new_scene(collider.path_to_next_scene)
 		if collider is ItemObject3D:
 			IInspect.visible = true
 			IInspect.set_object(collider)

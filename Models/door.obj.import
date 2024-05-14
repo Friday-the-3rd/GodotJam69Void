@@ -3,7 +3,11 @@
 importer="wavefront_obj"
 importer_version=1
 type="Mesh"
+<<<<<<< HEAD
 uid="uid://cvuqhb2cattyd"
+=======
+uid="uid://bslayi1djcy0k"
+>>>>>>> c844012091fe2e4fa0751692f9e5107aa2b1a99a
 path="res://.godot/imported/door.obj-c2ca491b52cda7b1704ae3a5ba6c7b2d.mesh"
 
 [deps]
