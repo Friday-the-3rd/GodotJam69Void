@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cln03s2n847wf"
+path="res://.godot/imported/washbasin.obj-6445b2a466287526c6dc127e32779aca.mesh"
+
+[deps]
+
+files=["res://.godot/imported/washbasin.obj-6445b2a466287526c6dc127e32779aca.mesh"]
+
+source_file="res://Models/washbasin.obj"
+dest_files=["res://.godot/imported/washbasin.obj-6445b2a466287526c6dc127e32779aca.mesh", "res://.godot/imported/washbasin.obj-6445b2a466287526c6dc127e32779aca.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
