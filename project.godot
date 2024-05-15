@@ -96,3 +96,13 @@ inspect_desc={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=5
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile=5
+reflections/sky_reflections/fast_filter_high_quality=true
+global_illumination/voxel_gi/quality=1
+environment/ssao/quality=4
+environment/ssil/quality=4
+environment/screen_space_reflection/roughness_quality=3
+environment/subsurface_scattering/subsurface_scattering_quality=3

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cbnt1e0vv63fc"]
+
+[ext_resource type="Texture2D" uid="uid://cyod5mmvxwb32" path="res://textures/brick/brick_normal.png" id="3"]
+
+[resource]
+albedo_color = Color(0.589096, 0.589096, 0.589096, 1)
+normal_enabled = true
+normal_scale = -16.0
+normal_texture = ExtResource("3")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
