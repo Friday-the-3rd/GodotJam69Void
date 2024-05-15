@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dbej3buundnxd"
+path="res://.godot/imported/drip.obj-b5de68f1ecd7a59f43af706b3615dda4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/drip.obj-b5de68f1ecd7a59f43af706b3615dda4.mesh"]
+
+source_file="res://Models/drip.obj"
+dest_files=["res://.godot/imported/drip.obj-b5de68f1ecd7a59f43af706b3615dda4.mesh", "res://.godot/imported/drip.obj-b5de68f1ecd7a59f43af706b3615dda4.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
