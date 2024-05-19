@@ -5,3 +5,7 @@ extends WorldEnvironment
 func _physics_process(delta):
 	noise.offset.z += 2.5 * delta
 	pass
+
+func _ready():
+	Music.stream = preload("res://Sounds/Void.mp3")
+	Music.play()

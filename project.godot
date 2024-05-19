@@ -14,13 +14,15 @@ config/name="GodotJam69"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/image="res://Graphics/SplashScreen.png"
-config/icon="res://Graphics/Friday3rd F3.svg"
+config/icon="res://Graphics/logo.png"
 boot_splash/minimum_display_time=2000
 
 [autoload]
 
 TransitionScreen="*res://Scenes/transition_screen.tscn"
 IInspect="*res://Scenes/item_inspect.tscn"
+Music="*res://Scenes/music.tscn"
+DialogueHandler="*res://Scenes/dialogue_handler.tscn"
 
 [display]
 
@@ -35,7 +37,8 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://Levels/": "yellow",
-"res://Models/": "orange"
+"res://Models/": "orange",
+"res://Scenes/": "red"
 }
 
 [filesystem]

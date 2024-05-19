@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://frc7gav6pjkv"]
+
+[ext_resource type="Environment" uid="uid://bqdka4wid525d" path="res://Environments/hospital_env.tres" id="1_gpuap"]
+[ext_resource type="PackedScene" uid="uid://dqjijb6rfqqtf" path="res://Levels/HospitalEndingLevel.tscn" id="2_prbnt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayyoe"]
+
+[node name="LevelEnv" type="WorldEnvironment"]
+environment = ExtResource("1_gpuap")
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_ayyoe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="LevelHome" parent="ViewportContainer/SubViewport" instance=ExtResource("2_prbnt")]

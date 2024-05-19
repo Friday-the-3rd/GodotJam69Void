@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bcncin6fouocs"]
+
+[ext_resource type="Texture2D" uid="uid://dtaqgesopoe3r" path="res://textures/homebrick/homebrick_albedo.png" id="1_43wv2"]
+[ext_resource type="Texture2D" uid="uid://bh82bu3tietm0" path="res://textures/homebrick/homebrick_normal.png" id="2_0koli"]
+
+[resource]
+albedo_color = Color(1, 0.903668, 0.85744, 1)
+albedo_texture = ExtResource("1_43wv2")
+metallic_specular = 0.0
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 0.2
+normal_texture = ExtResource("2_0koli")
+uv1_triplanar = true

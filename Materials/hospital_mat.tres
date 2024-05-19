@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bvfdt448x7q1h"]
+
+[resource]
+resource_name = "chest"
+cull_mode = 2
+albedo_color = Color(0.3634, 0.46, 0.46, 1)

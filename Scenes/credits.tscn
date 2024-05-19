@@ -1,0 +1,130 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvlx2niynlknq"]
+
+[ext_resource type="Script" path="res://Scenes/credits.gd" id="1_m3ded"]
+[ext_resource type="Texture2D" uid="uid://cvpqir2fiujvi" path="res://Graphics/logo with text.png" id="2_2qsw4"]
+
+[node name="Credits" type="PanelContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_m3ded")
+
+[node name="MenuBGContainer" type="SubViewportContainer" parent="."]
+layout_mode = 2
+stretch = true
+
+[node name="MenuBG" type="SubViewport" parent="MenuBGContainer"]
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="BGPlaceholder" type="ColorRect" parent="MenuBGContainer/MenuBG"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.705882, 0.372549, 0.117647, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Padding" type="ReferenceRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+border_color = Color(1, 0, 0, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(360, 240)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Separation" type="ReferenceRect" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+border_color = Color(1, 0, 0, 0)
+
+[node name="Back" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Back"
+
+[node name="Padding2" type="ReferenceRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+border_color = Color(1, 0, 0, 0)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 16
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/normal_font_size = 48
+text = "
+Credits"
+fit_content = true
+
+[node name="Separation" type="ReferenceRect" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+border_color = Color(1, 0, 0, 0)
+
+[node name="Button2" type="LinkButton" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Radosław \"Raffael\" Piątek"
+uri = "https://www.linkedin.com/in/rados%C5%82aw-pi%C4%85tek/"
+
+[node name="Button3" type="LinkButton" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Szymon \"Sziimek\" Piątek"
+uri = "https://www.linkedin.com/in/szymon-pi%C4%85tek-19347024a/"
+
+[node name="Button" type="LinkButton" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Kacper \"Shakkael\" Piątek"
+uri = "https://kacper-piatek.pl"
+
+[node name="Separation2" type="ReferenceRect" parent="."]
+custom_minimum_size = Vector2(20, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+border_color = Color(1, 0, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Separation2"]
+custom_minimum_size = Vector2(200, 220)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -240.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("2_2qsw4")
+expand_mode = 2
+stretch_mode = 4
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Back" to="." method="_on_exit_pressed"]

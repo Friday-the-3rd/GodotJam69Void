@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://h4l4nxnxn4v1"]
 
-[ext_resource type="Script" path="res://Classes/test_level.gd" id="1_i12ox"]
+[ext_resource type="Script" path="res://Levels/VoidLevel.gd" id="1_2r7l4"]
 [ext_resource type="PackedScene" uid="uid://dvwx4paulp02r" path="res://Entities/Player.tscn" id="1_jpimm"]
 [ext_resource type="Shader" path="res://Entities/Player.gdshader" id="2_j2tx5"]
 [ext_resource type="PackedScene" uid="uid://dww2yxhntmfy6" path="res://Objects/void.tscn" id="4_t58pd"]
@@ -35,7 +35,7 @@ point_count = 2
 material = SubResource("StandardMaterial3D_asxjo")
 
 [node name="VoidLevel" type="Node3D"]
-script = ExtResource("1_i12ox")
+script = ExtResource("1_2r7l4")
 
 [node name="Collidable" type="Node3D" parent="."]
 
@@ -47,6 +47,25 @@ mesh = SubResource("PlaneMesh_pj4en")
 
 [node name="FogShader" parent="Player/Neck" index="0"]
 mesh = SubResource("QuadMesh_6dn75")
+
+[node name="Skeleton3D" parent="Player/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/1/rotation = Quaternion(-0.0581642, 0, 0, 0.998307)
+bones/4/rotation = Quaternion(0.0581643, -2.86629e-18, -2.74077e-10, 0.998307)
+bones/7/rotation = Quaternion(-0.557435, -0.429707, 0.575841, -0.415962)
+bones/8/rotation = Quaternion(0.49563, -0.000101481, -0.0639843, 0.866174)
+bones/9/rotation = Quaternion(-0.0299411, 0.000232075, -0.00775205, 0.999522)
+bones/11/rotation = Quaternion(0.556062, -0.430772, 0.576953, 0.415157)
+bones/12/rotation = Quaternion(0.507318, 0.00026988, 0.0628721, 0.859462)
+bones/13/rotation = Quaternion(-0.0300614, -0.000255725, 0.00850436, 0.999512)
+bones/15/rotation = Quaternion(-0.00054274, -0.0106839, 0.998636, -0.0511009)
+bones/16/rotation = Quaternion(-0.032193, 0.00077779, -0.0240972, 0.999191)
+bones/17/rotation = Quaternion(0.509941, 0.0140525, -0.00833148, 0.860054)
+bones/18/rotation = Quaternion(0.266752, -0.0254851, 0.00705608, 0.963402)
+bones/20/rotation = Quaternion(0.00047685, -0.00939234, 0.998649, 0.0511043)
+bones/21/rotation = Quaternion(-0.0396459, -0.000961772, 0.0240952, 0.998923)
+bones/22/rotation = Quaternion(0.518862, -0.0136761, 0.00830169, 0.854708)
+bones/23/rotation = Quaternion(0.262864, 0.0251447, -0.0068527, 0.964481)
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 amount = 216
@@ -86,6 +105,31 @@ scale_amount_max = 0.2
 [node name="MeshInstance3D2" parent="." instance=ExtResource("4_t58pd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1000, -1000)
 skeleton = NodePath("")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="Timer4" type="Timer" parent="."]
+wait_time = 38.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="Timer4" to="." method="_on_timer_4_timeout"]
 
 [editable path="Player"]
 [editable path="Player/QuitWindow"]

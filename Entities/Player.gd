@@ -4,7 +4,7 @@ class_name Player
 ######
 ### Constants
 ######
-const SPEED := 2.0
+const SPEED := 5.0
 #const JUMP_VELOCITY := 4.5
 const MOUSE_SENS := 0.002
 
@@ -22,6 +22,7 @@ var target_pos := Vector3.ZERO
 @onready var QWindow := $QuitWindow
 @onready var Ray := $Neck/Ray
 @onready var Feet := $Feet
+@onready var AnimTree := $AnimationTree
 
 var item_inspect = preload("res://Scenes/item_inspect.tscn")
 
@@ -40,12 +41,14 @@ func ray_collision_use():
 	if Ray.get_collider() != null:
 		var collider = Ray.get_collider()
 		if collider is Transition:
-			collider.use()
 			if !collider.locked:
-				collider.connect("door_opened",TransitionScreen.change_to_new_scene.bind(collider.path_to_next_scene))
+				collider.connect("moved",TransitionScreen.change_to_new_scene.bind(collider.path_to_next_scene))
+			collider.use()
 		if collider is ItemObject3D:
 			IInspect.visible = true
 			IInspect.set_object(collider)
+		if collider.is_in_group("dishes"):
+			collider.use_it()
 	
 func _unhandled_input(event):
 	look_around(event)
@@ -60,13 +63,7 @@ func movement(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
-	# Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	#	velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+		
 	var input_dir = Input.get_vector("strafe_left", "strafe_right", "walk_forward", "walk_backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -79,7 +76,10 @@ func movement(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
+	AnimTree.set("parameters/movement_dir/blend_position", Vector2(direction.x, -direction.z))
+	AnimTree.set("parameters/is_walking/blend_amount", !(velocity.x != 0 or velocity.z != 0))
+	
 	move_and_slide()
 	
 func look_around(event):

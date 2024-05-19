@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c127tvnj4etwk"]
+
+[ext_resource type="Texture2D" uid="uid://byjk810hei5n8" path="res://textures/hospitalwalls/wall_albedo.png" id="1_6c6us"]
+[ext_resource type="Texture2D" uid="uid://b2d7lyd1fla6a" path="res://textures/hospitalwalls/wall_normal.png" id="2_jpguq"]
+
+[resource]
+albedo_color = Color(0.588235, 0.588235, 0.745098, 1)
+albedo_texture = ExtResource("1_6c6us")
+normal_enabled = true
+normal_scale = 0.01
+normal_texture = ExtResource("2_jpguq")
+uv1_scale = Vector3(0.065, 0.065, 0.065)
+uv1_offset = Vector3(0, -0.03, 0)
+uv1_triplanar = true

@@ -1,7 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://fm0lmjtrxw4f"]
+[gd_scene load_steps=13 format=3 uid="uid://fm0lmjtrxw4f"]
 
 [ext_resource type="Script" path="res://Scenes/transition_screen.gd" id="1_0sfwa"]
-[ext_resource type="Texture2D" uid="uid://kpojinknpggt" path="res://Graphics/SplashScreen.png" id="1_7e5e1"]
+[ext_resource type="Texture2D" uid="uid://cvpqir2fiujvi" path="res://Graphics/logo with text.png" id="2_ojw7p"]
+
+[sub_resource type="Gradient" id="Gradient_a3mxj"]
+colors = PackedColorArray(0.365767, 0.217687, 0, 1, 0.139986, 0.0925542, 0.0535041, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gpgqk"]
+frequency = 0.0008
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p11y6"]
+width = 1366
+height = 768
+color_ramp = SubResource("Gradient_a3mxj")
+noise = SubResource("FastNoiseLite_gpgqk")
 
 [sub_resource type="Animation" id="Animation_hlc14"]
 resource_name = "FadeIn"
@@ -57,6 +69,44 @@ _data = {
 "RESET": SubResource("Animation_v10ch")
 }
 
+[sub_resource type="Animation" id="Animation_sji5e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/LogoWithText:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gsqts"]
+resource_name = "rotate"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/LogoWithText:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1auhd"]
+_data = {
+"RESET": SubResource("Animation_sji5e"),
+"rotate": SubResource("Animation_gsqts")
+}
+
 [node name="Transition" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_0sfwa")
@@ -72,11 +122,34 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-texture = ExtResource("1_7e5e1")
+texture = SubResource("NoiseTexture2D_p11y6")
+
+[node name="LogoWithText" type="Sprite2D" parent="TextureRect"]
+position = Vector2(220, 610)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_ojw7p")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 894.0
+offset_top = 40.0
+offset_right = 1290.0
+offset_bottom = 142.0
+theme_override_font_sizes/normal_font_size = 64
+text = "Foggy Mind"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_buloy")
 }
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1auhd")
+}
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

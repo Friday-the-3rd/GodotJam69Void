@@ -6,11 +6,14 @@ class_name Transition
 
 @onready var AnimPlayer := $AnimationPlayer
 
-signal door_opened
+signal moved
 
 func use():
-	AnimPlayer.play("open")
+	if AnimPlayer != null:
+		AnimPlayer.play("used")
+	else:
+		_on_animation_tree_animation_finished("None")
 	
 
 func _on_animation_tree_animation_finished(_anim_name):
-	door_opened.emit()
+	moved.emit()

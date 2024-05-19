@@ -53,10 +53,10 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Play"
 
-[node name="Options" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Options"
+text = "Credits"
 
 [node name="Separation" type="ReferenceRect" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
@@ -84,10 +84,22 @@ text = "
 Foggy Mind"
 fit_content = true
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/normal_font_size = 24
+text = "
+2024 © Friday the 3rd
+for Godot Wild Jam #69"
+fit_content = true
+
 [node name="QuitWindow" parent="." instance=ExtResource("2_1rl7i")]
 visible = false
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="close_requested" from="QuitWindow" to="." method="_on_stay_pressed"]
 [connection signal="pressed" from="QuitWindow/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
